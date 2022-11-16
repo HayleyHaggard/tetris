@@ -1,0 +1,70 @@
+$maxWidth: 1280;
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $addMobSize: $addSize +$addSize* 0.7;
+  @media (max-width: 767px) {
+    font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+  }
+  @media (min-width: 767px) {
+    font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+  }
+}
+
+//@include adaptiv-font(40, 24);
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .header {
+    &__btn {
+      display: none;
+    }
+  }
+  .menu {
+    &__list {
+      display: none;
+    }
+    &__btn {
+      position: relative;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 22px;
+      background-color: transparent;
+      border: none;
+      span {
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+      }
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+      }
+      &::before {
+        top: 0;
+      }
+      &::After {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {}
