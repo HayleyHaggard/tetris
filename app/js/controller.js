@@ -1,15 +1,15 @@
 export default class Controller {
   constructor(game, view) {
-
     this.game = game;
     this.view = view;
     this.intervalId = null;
     this.isPlaying = false;
 
-
-
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
     document.addEventListener('keyup', this.handleKeyUp.bind(this));
+    document.addEventListener('click', this.handleClick.bind(this));
+
+    this.buttons = document.getElementsByTagName('button');
 
     this.view.renderStartScreen();
   }
@@ -19,6 +19,7 @@ export default class Controller {
     this.updateView();
   }
 
+  //selectable screen depending on the condition
   updateView() {
     const state = this.game.getState();
 
@@ -48,6 +49,7 @@ export default class Controller {
     this.play();
   }
 
+  //block movement timer 
   startTimer() {
     const speed = 1000 - this.game.getState().level * 100;
 
@@ -66,7 +68,7 @@ export default class Controller {
   }
 
 
-
+  //click processing (keyboard and mouse)
   handleKeyDown(event) {
     const state = this.game.getState();
 
@@ -107,4 +109,46 @@ export default class Controller {
         break;
     }
   }
+
+  handleClick(event) {
+    const state = this.game.getState();
+    const target = event.target;
+    const keyId = target.getAttribute('id');
+
+    switch (keyId) {
+      case 'left':
+        if (this.isPlaying) {
+          this.game.movePieceLeft();
+          this.updateView();
+        }
+        break;
+      case 'up':
+        if (this.isPlaying) {
+          this.game.rotatePiece();
+          this.updateView();
+        }
+        break;
+      case 'right':
+        if (this.isPlaying) {
+          this.game.movePieceRight();
+          this.updateView();
+        }
+        break;
+      case 'down':
+        if (this.isPlaying) {
+          this.game.movePieceDown();
+          this.updateView();
+        }
+        break;
+      case 'power': //same as enter
+        if (state.isGameOver) {
+          this.reset();
+        } else if (this.isPlaying) {
+          this.pause();
+        } else {
+          this.play();
+        }
+        break;
+    }
+  };
 }

@@ -7,19 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tetris</title>
   <link rel="stylesheet" href="css/style.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link id="favicon" rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
 <body>
-
-  <div id="root">
-    <h1 class="tetris__title">
-      <span style="color: rgb(255, 0, 0)">T</span>
-      <span style="color: rgb(255, 0, 0)">E</span>
-      <span style="color: rgb(255, 0, 0)">T</span>
-      <span style="color: rgb(255, 0, 0)">R</span>
-      <span style="color: rgb(255, 0, 0)">I</span>
-      <span style="color: rgb(255, 0, 0)">S</span>
-    </h1>
+  <div class="gameboy">
+    <div class="gameboy__inner">
+      <div id="root">
+      </div>
+      <div class="gameboy__buttons">
+        <div class="gameboy__item">
+          <button class="gameboy__item-btn" id="up">
+          </button>
+          <div class="gameboy__item-box">
+            <button class="gameboy__item-btn" id="left"></button>
+            <button class="gameboy__item-btn" id="right"></button>
+          </div>
+          <button class="gameboy__item-btn" id="down"></button>
+        </div>
+        <div class="gameboy__item">
+          <button class="gameboy__item-btn main-btn" id="power"></button>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="js/main.min.js" type="module"></script>
 </body>

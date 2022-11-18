@@ -63,10 +63,10 @@ export default class Game {
         playfield[y][x] = 0;
       }
     }
-
     return playfield;
   }
 
+  //our blocks
   createPiece() {
     const index = Math.floor(Math.random() * 7);
     const type = 'IJLOSTZ'[index];
@@ -134,6 +134,7 @@ export default class Game {
     return piece;
   }
 
+  //move and rotate blocks
   movePieceLeft() {
     this.activePiece.x -= 1;
 
@@ -218,6 +219,7 @@ export default class Game {
     }
   }
 
+  //clear up filled lines
   clearLines() {
     const rows = 20;
     const columns = 10;
