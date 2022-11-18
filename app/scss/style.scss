@@ -5,7 +5,19 @@
 @import 'global';
 @import 'libs';
 
+#root {
+  text-align: center;
+}
 
+#root h1 {
+  // margin-bottom: 20px;
+  padding: 20px;
+}
+
+#root canvas {
+  display: block;
+  margin: 0 auto;
+}
 
 
 @import 'media';
